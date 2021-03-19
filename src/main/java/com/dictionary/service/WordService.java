@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -34,6 +35,10 @@ public class WordService {
         return StreamSupport
                 .stream(wordRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
+    }
+
+    public List<Word> getWords(String language) {
+        return new ArrayList<>(wordRepository.getWordsByLanguage(language));
     }
 
     public Word getWord(Long id) {
