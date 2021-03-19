@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface WordRepository extends CrudRepository<Word, Long> {
 
-    @Query("from Word where language = :language")
-    List<Word> getWordsByLanguage(@Param("language") String language);
+    @Query("from Word where language = :language and lower(phrase) like concat('%', lower(:phrase), '%')")
+    List<Word> getWordsByLanguage(@Param("language") String language,
+                                  @Param("phrase") String phrase);
 }

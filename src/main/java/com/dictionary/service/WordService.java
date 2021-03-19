@@ -37,8 +37,8 @@ public class WordService {
                 .collect(Collectors.toList());
     }
 
-    public List<Word> getWords(String language) {
-        return new ArrayList<>(wordRepository.getWordsByLanguage(language));
+    public List<Word> getWords(String language, String phrase) {
+        return new ArrayList<>(wordRepository.getWordsByLanguage(language, phrase));
     }
 
     public Word getWord(Long id) {

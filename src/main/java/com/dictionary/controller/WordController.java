@@ -36,8 +36,9 @@ public class WordController {
     }
 
     @GetMapping("/language")
-    public ResponseEntity<List<WordDto>> getWordsByLanguage(@ModelAttribute("language") String language) {
-        List<Word> words = wordService.getWords(language);
+    public ResponseEntity<List<WordDto>> getWordsByLanguage(@ModelAttribute("language") String language,
+                                                            @ModelAttribute("phrase") String phrase) {
+        List<Word> words = wordService.getWords(language, phrase);
         List<WordDto> wordsDto = words.stream().map(WordDto::from).collect(Collectors.toList());
         return new ResponseEntity<>(wordsDto, HttpStatus.OK);
     }
