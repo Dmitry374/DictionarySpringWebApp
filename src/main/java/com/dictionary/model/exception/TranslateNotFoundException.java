@@ -4,7 +4,7 @@ import java.text.MessageFormat;
 
 public class TranslateNotFoundException extends RuntimeException {
 
-    public TranslateNotFoundException(Long id) {
+    public TranslateNotFoundException(final Long id) {
         super(MessageFormat.format("Could not find translate with id: {0}", id));
     }
 }

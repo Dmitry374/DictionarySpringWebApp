@@ -15,6 +15,8 @@ public class Translate {
     private Long id;
     private String phrase;
     private String language;
+    @ManyToOne
+    private Word word;
 
     public static Translate from(TranslateDto translateDto) {
         Translate translate = new Translate();
