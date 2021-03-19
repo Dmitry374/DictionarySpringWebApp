@@ -1,5 +1,6 @@
 package com.dictionary.model;
 
+import com.dictionary.model.dto.WordDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,14 +22,18 @@ public class Word {
     @JoinColumn(name = "word_id")
     private List<Translate> translates = new ArrayList<>();
 
-    public Word() {
-    }
-
     public void addTranslate(Translate translate) {
         translates.add(translate);
     }
 
     public void removeTranslate(Translate translate) {
         translates.remove(translate);
+    }
+
+    public static Word from(WordDto wordDto) {
+        Word word = new Word();
+        word.setPhrase(wordDto.getPhrase());
+        word.setLanguage(wordDto.getLanguage());
+        return word;
     }
 }

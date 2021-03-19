@@ -1,5 +1,6 @@
 package com.dictionary.model;
 
+import com.dictionary.model.dto.TranslateDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,6 +16,10 @@ public class Translate {
     private String phrase;
     private String language;
 
-    public Translate() {
+    public static Translate from(TranslateDto translateDto) {
+        Translate translate = new Translate();
+        translate.setPhrase(translateDto.getPhrase());
+        translate.setLanguage(translateDto.getLanguage());
+        return translate;
     }
 }
